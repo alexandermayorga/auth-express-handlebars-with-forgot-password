@@ -1,0 +1,39 @@
+    <div class="container_login">
+        <form id="forgot_form">
+            <h1>Reset Password</h1>
+            <div>
+                <input type="text" id="email" name="email" placeholder="enter your mail">
+            </div>
+
+            <button type="submit">Reset</button>
+            <span>or
+                <a href="/">Go to Home Page</a>
+            </span>
+        </form>
+    </div>
+
+    <script>
+        // Form Validation
+        $("#forgot_form").on('submit', function(e) {
+            e.preventDefault();
+            
+            const user = {
+                email: $('#email').val(),
+            }
+
+            $.ajax({
+                type:'POST',
+                url:'/forgot-password',
+                data: JSON.stringify(user),
+                contentType: 'application/json',
+                success: (data)=>{
+                    alert("Check your Email");
+                    window.location.href = '/login';
+                },
+                error:(err)=>{
+                    const { message } = err.responseJSON;
+                    alert(message);
+                }
+            })
+        });
+    </script>

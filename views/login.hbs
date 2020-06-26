@@ -1,0 +1,44 @@
+    <div class="container_login">
+        <form id="login_form">
+            <h1>Log in</h1>
+            <div>
+                <input type="email" id="email" name="email" placeholder="enter your mail">
+            </div>
+
+            <div>
+                <input type="password" id="password" name="password" placeholder="enter your password">
+            </div>
+
+            <button type="submit">Log in</button>
+            <span>or
+                <a href="/register">Register</a>
+            </span>
+            {{>forgot}}
+        </form>
+    </div>
+
+    <script>
+        // Form Validation
+        $("#login_form").on('submit', function(e) {
+            e.preventDefault();
+            
+            const user = {
+                email: $('#email').val() ,
+                password: $('#password').val() 
+            }
+
+            $.ajax({
+                type:'POST',
+                url:'/login',
+                data: JSON.stringify(user),
+                contentType: 'application/json',
+                success: (data)=>{
+                    window.location.href = '/dashboard'
+                },
+                error:(err)=>{
+                    const { message } = err.responseJSON;
+                    alert(message);
+                }
+            })
+        });
+    </script>

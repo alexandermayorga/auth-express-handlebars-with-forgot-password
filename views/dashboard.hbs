@@ -1,0 +1,10 @@
+<div class="container dashboard">
+	{{>dashboard_nav}}
+	<div class="dash_body">
+		Welcome to your dashboard
+
+		{{#unless active}}
+		<div>Account has not been verified</div>
+		{{/unless}}
+	</div>
+</div>
