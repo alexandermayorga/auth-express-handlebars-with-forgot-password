@@ -43,6 +43,25 @@ router.post('/', function (req, res, next) {
         user.set('refreshTokens', []);
         user.set('resetToken', undefined);
 
+
+        const msg = {
+            to: `${user.email}`,
+            from: 'Mayorga Dev <me@alexmayorga.dev>',
+            subject: 'Your Password has been reset',
+            text: `Hi ${user.firstname}, we are letting you know your password has been changed. If this was not you please contact us immediately`,
+            html: `Hi ${user.firstname}, we are letting you know your password has been changed. If this was not you please contact us immediately`,
+        };
+        //ES6
+        sgMail
+            .send(msg)
+            .then((res) => {
+                // console.log(res)
+                // message sent
+            }, error => {
+                return res.status(400).json({ message: 'There was an error processing your request. Please try again.' })
+            });
+
+
         user.save((err, user) => {
             res.status(200).send();
         })
