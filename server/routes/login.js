@@ -31,8 +31,8 @@ router.post('/', function (req, res, next) {
                 if (err) res.status(400).json({ message: badRequest })
 
                 res
-                    .cookie('refreshToken', refreshToken, { httpOnly: true })
-                    .cookie('accessToken', accessToken, { httpOnly: true })
+                    .cookie('refreshToken', refreshToken, { httpOnly: true, expires: new Date(Date.now() + 24 * 3600000) })
+                    .cookie('accessToken', accessToken, { httpOnly: true, expires: new Date(Date.now() + (60 * 15000)) })
                     .status(200)
                     .end();
                 

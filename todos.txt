@@ -1,0 +1,9 @@
+After reseting your password, send  "Your password has been updated" Notification
+Check if username or email are already in the system when registering new user
+Have Fun with the CSS :)
+
+== Completed ==
+Link to resend Verification link
+    button -> hits api route -> generate RefreshToken for 1d -> send Verification email
+Clear expired Refresh Tokens
+Added expiration date for cookies in client

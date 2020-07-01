@@ -2,4 +2,5 @@
 .env
 /test
 /articles.txt
-/todos.txt
+*.code-workspace
+Prototype.xd

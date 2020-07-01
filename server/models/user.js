@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const config = require('./../config');
 const SALT_I = 10;
@@ -83,16 +82,30 @@ userSchema.methods.comparePassword = function( candidatePassword, cb ){
 userSchema.methods.genRefreshToken = function (cb) {
 	let user = this;
 
-	let refreshToken = jwt.sign({ userId: user._id.toHexString() }, config.REFRESH_TOKEN_SECRET, { expiresIn: '1d' });
+	let refreshToken = jwt.sign(
+		{ userId: user._id.toHexString(), email: user.email, firstname: user.firstname }, 
+		config.REFRESH_TOKEN_SECRET, 
+		{ expiresIn: '1d' }
+		);
 
-	user.refreshTokens = [...user.refreshTokens, refreshToken];
 
-	const accessToken = user.genAccessToken();
+	cleanRefreshTokens(user.refreshTokens)
+	.then(tokens =>{
+		const activeRefreshTokens = tokens.filter(token => token !== null)
 
-	user.save((err, user) => {
-		if (err) return cb(err);
-		cb(null, user, refreshToken, accessToken)
+		user.refreshTokens = [...activeRefreshTokens, refreshToken];
+
+		const accessToken = user.genAccessToken();
+
+		user.save((err, user) => {
+			if (err) return cb(err);
+			cb(null, user, refreshToken, accessToken)
+		})
 	})
+	.catch(error => {
+		return cb(error);
+	})
+
 }
 
 userSchema.methods.genAccessToken = function () {
@@ -160,7 +173,7 @@ userSchema.methods.genResetToken = function (cb) {
 
 	user.save((err, user) => {
 		if (err) return cb(err);
-		cb(null, user);
+		cb(null, user.resetToken);
 	})
 }
 
@@ -201,6 +214,35 @@ userSchema.statics.deleteTokens = function (refreshToken,cb) {
 
 	})
 
+}
+
+/**
+ * Takes an array of JWT tokens and returns a new array of non Expired tokens
+ * @param {Array} refreshTokens 
+ */
+function cleanRefreshTokens(refreshTokens) {
+	if (refreshTokens.length < 1) return new Promise((res,rej) => res([null]))
+
+	return Promise.all(refreshTokens.map(
+		async (refreshToken) => {
+			try {
+				const promise = new Promise((res, rej) => {
+
+					jwt.verify(refreshToken, config.REFRESH_TOKEN_SECRET, (err, decode) => {
+						if (err && err.name != 'TokenExpiredError') return rej(err)
+						if (err && err.name == 'TokenExpiredError') return res(null)
+						res(refreshToken)
+					})
+
+				})
+
+				const result = await promise;
+				return result;
+			} catch (rejected) {
+				return rejected;
+			}
+		}
+	))
 }
 
 

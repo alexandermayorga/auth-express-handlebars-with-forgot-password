@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Authentication and Forgot Password Functionality",
   "scripts": {
-    "dev": "nodemon server/server.js",
-    "devAuth": "nodemon server/tokenServer.js",
+    "devOld": "nodemon server/server.js",
+    "dev": "nodemon server/tokenServer.js",
     "start": "node server/server.js"
   },
   "author": "Alexander Mayorga",

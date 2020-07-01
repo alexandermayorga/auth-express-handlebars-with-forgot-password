@@ -21,20 +21,20 @@ router.post('/', function (req, res, next) {
         if (!user) {
             return res.status(400).json({ message: 'No User found with that email.'});
         } else {
-            user.genResetToken((err)=>{
+            user.genResetToken((err, resetToken)=>{
                 if (err) return res.status(400).json({ message: 'There was an error processing your request. Please try again.' });
 
                 const msg = {
                     to: `${user.email}`,
                     from: 'Mayorga Dev <me@alexmayorga.dev>',
                     subject: 'Password Reset',
-                    text: `Hi ${user.firstname}, Please use this link to reset your password: http://localhost:3000/reset-password/${user.resetToken}`,
+                    text: `Hi ${user.firstname}, Please use this link to reset your password: http://localhost:3000/reset-password/${resetToken}`,
                     html: `
                         Hi ${user.firstname}, Please use this link to verify your email address:
                         <br><br>
                         <a 
                             style="padding:6px 12px; background-color:#026e00;color: #fff;border-radius:6px;display: inline-block;" 
-                            href="http://localhost:3000/reset-password/${user.resetToken}">Reset Token</a>
+                            href="http://localhost:3000/reset-password/${resetToken}">Reset Token</a>
                     `,
                 };
                 //ES6
