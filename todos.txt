@@ -1,10 +1,3 @@
+bodyparser module might not be needed anymore. Check this and remove if not necessary
 Add remember me for 30 days feature
 Have Fun with the CSS :)
-
-== Completed ==
-Check if username or email are already in the system when registering new user
-After reseting your password, send  "Your password has been updated" Notification
-Link to resend Verification link
-    button -> hits api route -> generate RefreshToken for 1d -> send Verification email
-Clear expired Refresh Tokens
-Added expiration date for cookies in client
