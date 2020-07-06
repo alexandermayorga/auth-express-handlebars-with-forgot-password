@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const config = require('../config');
 
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -34,15 +35,17 @@ router.post('/', function (req, res, next) {
         user.genRefreshToken((err, user, refreshToken, accessToken) => {
             if (err) return res.status(404).end();
 
+            const hostname = (process.env.NODE_ENV === 'production' ? req.hostname : `http://localhost:${config.PORT}`)
+
             const msg = {
                 to: `${user.email}`,
                 from: 'Mayorga Dev <me@alexmayorga.dev>',
                 subject: 'Verification Email',
-                text: `Hi ${user.firstname}, Please use this link to verify your email address: http://localhost:3000/verify-account/${user.email}/${refreshToken}`,
+                text: `Hi ${user.firstname}, Please use this link to verify your email address: ${hostname}/verify-account/${user.email}/${refreshToken}`,
                 html: `
                 Hi ${user.firstname}, Please use this link to verify your email address:
                 <br><br>
-                http://localhost:3000/verify-account/${user.email}/${refreshToken}
+                ${hostname}/verify-account/${user.email}/${refreshToken}
             `,
             };
             //ES6

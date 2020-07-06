@@ -1,3 +1,2 @@
-bodyparser module might not be needed anymore. Check this and remove if not necessary
 Add remember me for 30 days feature
 Have Fun with the CSS :)

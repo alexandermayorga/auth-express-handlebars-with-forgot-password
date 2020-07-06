@@ -7,7 +7,7 @@ body{
 .btn-primary {
     color: #fff;
     background-color: #7557B9;
-    border-color: #5D419C;
+    border-color: #aea0cd;
 }
 .btn-primary:hover,
 .btn-primary:focus {
@@ -45,12 +45,16 @@ a.text-primary:focus {
 
 /*======= PANELS =========*/
 .panel-primary {
-    border-color: #5D419C;
+    border-color: #aea0cd;
 }
 .panel-primary>.panel-heading {
     color: #FFF;
     background-color: #7557B9;
-    border-color: #5D419C;
+    border-color: #aea0cd;
+}
+.panel-title{
+    font-family: 'Bree Serif', serif;
+    font-size: 2.5rem;
 }
 
 
@@ -58,7 +62,7 @@ a.text-primary:focus {
 .input-group-addon {
     color: #fff;
     background-color: #7557B9;
-    border: 1px solid #5D419C;
+    border: 1px solid #aea0cd;
 }
 
 
@@ -79,6 +83,7 @@ a.text-primary:focus {
 
 .brand {
     font-size: 2rem;
+    font-family: 'Bree Serif', serif;
 }
 .brand .glyphicon {
     margin-right: 3px;

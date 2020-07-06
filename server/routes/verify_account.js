@@ -48,15 +48,17 @@ router.post('/', function (req, res, next) {
     jwt.verify(req.cookies.refreshToken, config.REFRESH_TOKEN_SECRET, (err, user) => {
         if (err) return console.log(err)
 
+        const hostname = (process.env.NODE_ENV === 'production' ? req.hostname : `http://localhost:${config.PORT}`)
+
         const msg = {
             to: `${user.email}`,
             from: 'Mayorga Dev <me@alexmayorga.dev>',
             subject: 'Verification Email',
-            text: `Hi ${user.firstname}, Please use this link to verify your email address: http://localhost:3000/verify-account/${user.email}/${req.cookies.refreshToken}`,
+            text: `Hi ${user.firstname}, Please use this link to verify your email address: ${hostname}/verify-account/${user.email}/${req.cookies.refreshToken}`,
             html: `
                     Hi ${user.firstname}, Please use this link to verify your email address:
                     <br><br>
-                    http://localhost:3000/verify-account/${user.email}/${req.cookies.refreshToken}
+                    ${hostname}/verify-account/${user.email}/${req.cookies.refreshToken}
                 `,
         };
         //ES6
