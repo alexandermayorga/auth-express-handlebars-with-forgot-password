@@ -65,6 +65,11 @@ a.text-primary:focus {
     border: 1px solid #aea0cd;
 }
 
+form label.error {
+    display: table-caption;
+    color: #a94442;
+}
+
 
 /*======= DASHBOARD =========*/
 .sidebar {
