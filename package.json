@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "Authentication and Forgot Password Functionality",
   "scripts": {
-    "start": "nodemon server/server.js"
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
   },
   "author": "Alexander Mayorga",
   "license": "ISC",
+  "engines": {
+    "node":"10.15.0"
+  },
   "dependencies": {
     "@sendgrid/mail": "^7.1.0",
     "bcrypt": "^4.0.1",
