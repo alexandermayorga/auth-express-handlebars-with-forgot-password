@@ -33,7 +33,7 @@ router.post('/', function (req, res, next) {
                         Hi ${user.firstname}, Please use this link to verify your email address:
                         <br><br>
                         <a 
-                            style="padding:6px 12px; background-color:#026e00;color: #fff;border-radius:6px;display: inline-block;" 
+                            style="padding:6px 12px; background-color:#7557B9;color: #fff;border-radius:6px;display: inline-block;" 
                             href="http://localhost:3000/reset-password/${resetToken}">Reset Token</a>
                     `,
                 };

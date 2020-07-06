@@ -1,32 +1,19 @@
-        <div class="dash_nav">
-            <!--  HOME --> 
-            <div class="item">
-                <a href="/">
-                    <i class="fa fa-home" aria-hidden="true"></i>
-                </a>
-            </div>
-            <!--  REVIEWS --> 
-            <div class="item">
-                <a href="/dashboard/reviews">
-                    <i class="fa fa-commenting" aria-hidden="true"></i>
-                </a>
-            </div>
+<div class="brand text-primary">
+    <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> Dashboard
+</div>
 
+<hr>
 
-            {{#if isAdmin}}
-            <!--  ARTICLES --> 
-            <div class="item">
-                
-                <a href="/dashboard/articles">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                </a>
-            </div>
-            {{/if}}
-
-            <!--  LOGOUT --> 
-            <div class="item">
-                <a href="/dashboard/logout">
-                    <i class="fa fa-sign-out" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
+<ul class="nav nav-pills nav-stacked">
+    <li role="presentation" class="active">
+        <a class="text-primary" href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
+    </li>
+    <li role="presentation">
+        <a class="text-primary" href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile</a>
+    </li>
+    <li role="presentation">
+        <a class="text-primary" href="/dashboard/logout">
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Log Out
+        </a>
+    </li>    
+</ul>

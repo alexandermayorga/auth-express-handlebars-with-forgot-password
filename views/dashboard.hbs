@@ -1,13 +1,20 @@
-<div class="container dashboard">
-	{{>dashboard_nav}}
-	<div class="dash_body">
-		{{#unless active}}
-		<div class="alert alert-info text-center" role="alert">
-			<span style="margin-right: 15px;">Account has not been verified</span> <button id="resend-verification" class="btn btn-info btn-sm">Resend Verification Link</button>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 col-sm-3 sidebar">
+			{{>dashboard_nav}}
 		</div>
-		{{/unless}}
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div class="dash_body">
+				{{#unless active}}
+				<div class="alert alert-info text-center" role="alert">
+					<span style="margin-right: 15px;">Account has not been verified</span> <button id="resend-verification"
+						class="btn btn-info btn-sm">Resend Verification Link</button>
+				</div>
+				{{/unless}}
 
-		Welcome to your dashboard
+				<div class="h2">Welcome to your dashboard</div>
+			</div>
+		</div>
 	</div>
 </div>
 

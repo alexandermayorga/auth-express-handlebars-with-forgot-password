@@ -1,12 +1,10 @@
 const config = require('./config');
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser'); // to catch POST
 const cookieParser = require('cookie-parser'); // to parse Cookies
 const hbs = require('express-handlebars'); // Templating Engine
 
 // ROUTES
-const indexRouter = require('./routes/index');
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
 const forgotPasswordRouter = require('./routes/forgot_password');
@@ -31,7 +29,7 @@ const { auth } = require('./middleware/auth');
 //Get Static Files (css,js,etc)
 app.use( express.static(__dirname + './../public/') );
 
-app.use( bodyParser.json() ); //Needed to do POST
+app.use( express.json() ); //Needed to do POST
 app.use( cookieParser() ); //Needed for Cookies
 
 //// ############# HBS SETUP ############# ////
@@ -46,10 +44,10 @@ app.set('view engine', 'hbs');
 //// ############# //// ############# //// ############# //// ############# //// ############# //// ############# ////
 
 // ROUTES
-app.use('/', indexRouter);
+app.use('/', auth, loginRouter);
+app.use('/login', auth, loginRouter);
 app.use('/verify-account', verifyAccountRouter);
 app.use('/register', auth, registerRouter);
-app.use('/login', auth, loginRouter);
 app.use('/forgot-password', auth, forgotPasswordRouter);
 app.use('/reset-password', auth, resetPasswordRouter);
 app.use('/dashboard', auth, dashboardRouter);

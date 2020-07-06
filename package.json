@@ -3,15 +3,13 @@
   "version": "1.0.0",
   "description": "Authentication and Forgot Password Functionality",
   "scripts": {
-    "dev": "nodemon server/tokenServer.js",
-    "start": "node server/server.js"
+    "start": "nodemon server/server.js"
   },
   "author": "Alexander Mayorga",
   "license": "ISC",
   "dependencies": {
     "@sendgrid/mail": "^7.1.0",
     "bcrypt": "^4.0.1",
-    "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",

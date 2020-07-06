@@ -1,38 +1,79 @@
-    <div class="container_register">
-        <h1>Register for free !!</h1>
+
+<div class="centered centered-form">
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <h3 class="panel-title text-center text-uppercase">Register for free</h3>
+        </div>
+        <div class="panel-body">
+
+
         <form id="register_form">
-
-            <div>
-                <input type="text" id="username" name="username" placeholder="Pick a username">
+    
+            <div class="form-group">
+                <label class="hidden" for="username">Username</label>
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Pick a username">
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="hidden" for="firstname">First Name</label>
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></div>
+                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Your Firstname">
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="hidden" for="lastname">Last Name</label>
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></div>
+                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Your Lastname">
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="hidden" for="email">Email address</label>
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="youremail@email.com">
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label class="hidden" for="password">Password</label>
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></div>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                </div>
             </div>
 
-            <div>
-                <input type="text" id="firstname" name="firstname" placeholder="Your Firstname">
+            <div class="form-group">
+                <label class="hidden" for="password_confirm">Confirm Password</label>
+                <div class="input-group">
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></div>
+                    <input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Re-enter your password">
+                </div>
             </div>
 
-            <div>
-                <input type="text" id="lastname" name="lastname" placeholder="Your Lastname">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+
+            <hr>
+            <div class="text-center text-primary">
+                <a href="/login" class="text-primary">Have an account already?
+                <strong>Login</strong></a>
             </div>
 
-            <div>
-                <input type="text" id="email" name="email" placeholder="youremail@email.com">
-            </div>
-
-            <div>
-                <input type="password" id="password" name="password" placeholder="Enter password">
-            </div>
-
-            <div>
-                <input type="password" id="password_confirm" name="password_confirm" placeholder="Re-Enter password">
-            </div>
-
-            <button type="submit">Register</button>
-            <span>or
-                <a href="/login">Login</a>
-            </span>
-            {{>forgot}}
         </form>
+
+
+
+        </div>
     </div>
+</div>
+
 
 
     <script>

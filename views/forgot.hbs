@@ -1,16 +1,28 @@
-    <div class="container_login">
-        <form id="forgot_form">
-            <h1>Reset Password</h1>
-            <div>
-                <input type="text" id="email" name="email" placeholder="enter your mail">
-            </div>
+<div class="centered centered-form">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title text-center text-uppercase">Reset Password</h3>
+        </div>
+        <div class="panel-body">
+            <form id="forgot_form">
 
-            <button type="submit">Reset</button>
-            <span>or
-                <a href="/">Go to Home Page</a>
-            </span>
-        </form>
+                <div class="form-group">
+                    <label class="hidden" for="email">Email address</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your mail">
+                    </div>
+                </div>
+            
+                <button type="submit" class="btn btn-primary">Reset</button>
+                <span>or
+                    <a href="/"  class="text-primary">Go to Home Page</a>
+                </span>
+            </form>
+        </div>
     </div>
+</div>
+
 
     <script>
         // Form Validation

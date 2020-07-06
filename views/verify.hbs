@@ -1,4 +1,21 @@
-    <div class="container wrapper">
-        <p>{{message}}</p>
-        {{#if verified}} <a href="/dashboard" class="btn">Dashboard</a> {{/if}}
+
+    <br /><br /><br /><br />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="panel">
+                    <div class="panel-body">
+                        <br />
+                        <p class="text-primary">{{message}}</p>
+                        {{#if verified}}
+                        <a href="/dashboard" class="btn btn-primary">
+                            Go To Dashboard
+                        </a>
+                        {{/if}}
+                        <br /><br />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
